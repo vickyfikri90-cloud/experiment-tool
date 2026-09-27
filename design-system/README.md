@@ -23,7 +23,7 @@ A vanilla-JS kit for UI experiments: a live preview on the left and a Figma-styl
 - `bezier-handle` blue appears only in the Cubic Bézier editor. Don't spend it elsewhere.
 - Focus: `.input-wrap` gets a 1px `focus-border` border; toggle/checkbox rows get a 1px `focus-border` outline at 1px offset. At 2.7:1 on `surface` it is under the 3:1 focus-ring floor — use `control-fill` for the ring where accessibility matters.
 
-## Type
+## Typography
 
 - Set every control value, row label, menu option and button in `control` (Inter 500, 11/16, 0.055px tracking).
 - Set field labels in `field-label` (Inter 500, 9/14, 0.27px) in `ink-muted`.
@@ -68,6 +68,21 @@ A vanilla-JS kit for UI experiments: a live preview on the left and a Figma-styl
 - Use `SizeControl` for fixed pixel sizes: W and H side by side in one `.row`, with the lock ratio button as the third item. Locked shows the `link` icon on an `input-bg` fill; unlocked shows `link-broken` at 50% with no fill.
 - Use `DimensionControl` when a side can hug its content.
 
+## Figma variables
+
+- Every token in `tokens.json` has a `figma` block: variable `type` (COLOR, FLOAT shown as Number in Figma, STRING), `scopes` taken from its usage note, a suggested `name` (`color/…`, `spacing/…`, `radius/…`, `size/…`, `typography/…`), and a unit-free `value` where Figma needs one.
+- Scopes follow where a token is used:
+  - text colors → Text fill,
+  - backgrounds and control fills → Frame / Shape fill,
+  - borders and bézier lines → Stroke,
+  - shadow colors → Effect color,
+  - spacing → Gap (also covers padding),
+  - radius → Corner radius,
+  - size → Width & height,
+  - Typography → Font family / weight / size / line height / letter spacing.
+- Shadows can't be variables in Figma; each one is described as an Effect style.
+- `radius-round` (50%) becomes 10 px in Figma, and `preview-box`'s unitless line-height 1 becomes 14 px.
+
 ## Not synced
 
 - Only the 13 kit controls in `components-manifest.js` are included. The experiment components (HoverButton, RotateXButton, StaggerTextButton, HeadingEntrance, the carousels, HorizontalParallax, ArcScrollTransition) and their images were left out on purpose.
@@ -75,7 +90,6 @@ A vanilla-JS kit for UI experiments: a live preview on the left and a Figma-styl
 - No logo exists in the repository.
 - The 13 synced components are the repo's own scripts and CSS, concatenated verbatim. Nothing was rebuilt or rewritten.
 - Added after the sync: `FileUpload`, `ImageUpload`, `MultiImageUpload`, `ColorSelector`, `Tooltip` and `SizeControl`. They were written in the kit's pattern (DOM template + `init<Name>`) and are appended to the end of `bundle.js` and `bundle.css`. They are also in the repo as `Components/<Name>/` (local commits `14364f9` and `250a0e4`, not yet pushed at the time of writing). A re-sync from GitHub should take them from there.
-
 
 ---
 
