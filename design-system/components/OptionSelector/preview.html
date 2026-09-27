@@ -1,0 +1,16 @@
+<!-- @dsCard group="Primitives" height=200 -->
+<!doctype html><html><head><link rel="stylesheet" href="../../tokens.css"><link rel="stylesheet" href="../bundle.css"><script src="../bundle.js"></script><meta charset="utf-8"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Inter:wght@100..900&display=swap" rel="stylesheet"><style>html,body{margin:0;background:var(--surface);font-family:var(--font-sans);}.stage{display:flex;gap:24px;padding:16px 0;align-items:flex-start;flex-wrap:wrap}.stage>.col{width:240px}</style></head><body>
+<div class="stage"><div class="col" id="a"><div class="field option-selector">
+  <span class="field-label">Option Selector</span>
+  <div class="row">
+    <div class="input-wrap input-wrap--label option-selector__wrap">
+      <input type="text" class="option-selector__input" value="Jason" autocomplete="off" spellcheck="false">
+      <div class="option-selector__menu" role="listbox"></div>
+    </div>
+  </div>
+</div></div></div>
+<script>
+(function(){var K=window.ExperimentKit;
+var s=K.OptionSelector(document.getElementById('a'),{label:'Easing preset',options:['Linear','Ease','Ease in','Ease out','Ease in-out','Expo out'],value:'Ease out'});setTimeout(function(){s.openMenu();},50);
+})();
+</script></body></html>

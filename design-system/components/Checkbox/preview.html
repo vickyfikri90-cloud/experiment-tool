@@ -1,0 +1,33 @@
+<!-- @dsCard group="Primitives" height=120 -->
+<!doctype html><html><head><link rel="stylesheet" href="../../tokens.css"><link rel="stylesheet" href="../bundle.css"><script src="../bundle.js"></script><meta charset="utf-8"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Inter:wght@100..900&display=swap" rel="stylesheet"><style>html,body{margin:0;background:var(--surface);font-family:var(--font-sans);}.stage{display:flex;gap:24px;padding:16px 0;align-items:flex-start;flex-wrap:wrap}.stage>.col{width:240px}</style></head><body>
+<div class="stage"><div class="col" id="a"><div class="field checkbox-field">
+  <span class="field-label">Checkbox</span>
+  <div class="checkbox-stack">
+    <button type="button" class="checkbox-row is-checked" role="checkbox" aria-checked="true">
+      <span class="checkbox-box" aria-hidden="true">
+        <img class="checkbox-box__icon checkbox-box__icon--check" src="" alt="" data-icon="check">
+        <img class="checkbox-box__icon checkbox-box__icon--indeterminate" src="" alt="" data-icon="check-indeterminate">
+      </span>
+      <span class="checkbox-row__label">Check Active</span>
+    </button>
+    <button type="button" class="checkbox-row is-indeterminate" role="checkbox" aria-checked="mixed">
+      <span class="checkbox-box" aria-hidden="true">
+        <img class="checkbox-box__icon checkbox-box__icon--check" src="" alt="" data-icon="check">
+        <img class="checkbox-box__icon checkbox-box__icon--indeterminate" src="" alt="" data-icon="check-indeterminate">
+      </span>
+      <span class="checkbox-row__label">Check Indeterminate</span>
+    </button>
+    <button type="button" class="checkbox-row" role="checkbox" aria-checked="false">
+      <span class="checkbox-box" aria-hidden="true">
+        <img class="checkbox-box__icon checkbox-box__icon--check" src="" alt="" data-icon="check">
+        <img class="checkbox-box__icon checkbox-box__icon--indeterminate" src="" alt="" data-icon="check-indeterminate">
+      </span>
+      <span class="checkbox-row__label">Check Inactive</span>
+    </button>
+  </div>
+</div></div></div>
+<script>
+(function(){var K=window.ExperimentKit;
+K.Checkbox(document.getElementById('a'),{cycleIndeterminate:true});
+})();
+</script></body></html>

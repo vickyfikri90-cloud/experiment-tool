@@ -1,0 +1,54 @@
+<!-- @dsCard group="Primitives" height=310 -->
+<!doctype html><html><head><link rel="stylesheet" href="../../tokens.css"><link rel="stylesheet" href="../bundle.css"><script src="../bundle.js"></script><meta charset="utf-8"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Inter:wght@100..900&display=swap" rel="stylesheet"><style>html,body{margin:0;background:var(--surface);font-family:var(--font-sans);}.stage{display:flex;gap:24px;padding:16px 0;align-items:flex-start;flex-wrap:wrap}.stage>.col{width:240px}</style></head><body>
+<div class="stage"><div class="col" id="a"><div class="field color-selector">
+  <span class="field-label">Fill</span>
+  <div class="row">
+    <div class="input-wrap color-wrap color-selector__wrap">
+      <button type="button" class="color-selector__trigger" data-color-trigger aria-haspopup="dialog" aria-expanded="false" aria-label="Open color picker"><span class="swatch" data-color-swatch></span></button>
+      <input type="text" data-color-hex value="4372FF" spellcheck="false" aria-label="Hex">
+      <div class="opacity-wrap">
+        <input type="text" data-color-opacity value="100" aria-label="Opacity">
+        <span class="opacity-suffix">%</span>
+      </div>
+      <div class="color-selector__popover" role="dialog" aria-label="Color picker">
+        <div class="color-selector__sv" data-color-sv tabindex="0" role="slider" aria-label="Saturation and brightness"><span class="color-selector__thumb"></span></div>
+        <div class="color-selector__hue" data-color-hue tabindex="0" role="slider" aria-label="Hue" aria-valuemin="0" aria-valuemax="360"><span class="color-selector__thumb"></span></div>
+        <div class="color-selector__alpha" data-color-alpha tabindex="0" role="slider" aria-label="Opacity" aria-valuemin="0" aria-valuemax="100"><span class="color-selector__alpha-fill"></span><span class="color-selector__thumb"></span></div>
+        <div class="color-selector__hsb">
+          <div class="input-wrap"><span class="input-icon">H</span><input type="text" data-color-h inputmode="numeric" aria-label="Hue (0–360)"></div>
+          <div class="input-wrap"><span class="input-icon">S</span><input type="text" data-color-s inputmode="numeric" aria-label="Saturation (0–100)"></div>
+          <div class="input-wrap"><span class="input-icon">B</span><input type="text" data-color-b inputmode="numeric" aria-label="Brightness (0–100)"></div>
+          <button type="button" class="color-selector__eyedropper" data-color-eyedropper aria-label="Pick color from screen" aria-pressed="false" data-tooltip="Pick color from screen"><img src="" alt=""></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div><div class="col" id="b"><div class="field color-selector">
+  <span class="field-label">Stroke</span>
+  <div class="row">
+    <div class="input-wrap color-wrap color-selector__wrap">
+      <button type="button" class="color-selector__trigger" data-color-trigger aria-haspopup="dialog" aria-expanded="false" aria-label="Open color picker"><span class="swatch" data-color-swatch></span></button>
+      <input type="text" data-color-hex value="23272E" spellcheck="false" aria-label="Hex">
+      <div class="opacity-wrap">
+        <input type="text" data-color-opacity value="60" aria-label="Opacity">
+        <span class="opacity-suffix">%</span>
+      </div>
+      <div class="color-selector__popover" role="dialog" aria-label="Color picker">
+        <div class="color-selector__sv" data-color-sv tabindex="0" role="slider" aria-label="Saturation and brightness"><span class="color-selector__thumb"></span></div>
+        <div class="color-selector__hue" data-color-hue tabindex="0" role="slider" aria-label="Hue" aria-valuemin="0" aria-valuemax="360"><span class="color-selector__thumb"></span></div>
+        <div class="color-selector__alpha" data-color-alpha tabindex="0" role="slider" aria-label="Opacity" aria-valuemin="0" aria-valuemax="100"><span class="color-selector__alpha-fill"></span><span class="color-selector__thumb"></span></div>
+        <div class="color-selector__hsb">
+          <div class="input-wrap"><span class="input-icon">H</span><input type="text" data-color-h inputmode="numeric" aria-label="Hue (0–360)"></div>
+          <div class="input-wrap"><span class="input-icon">S</span><input type="text" data-color-s inputmode="numeric" aria-label="Saturation (0–100)"></div>
+          <div class="input-wrap"><span class="input-icon">B</span><input type="text" data-color-b inputmode="numeric" aria-label="Brightness (0–100)"></div>
+          <button type="button" class="color-selector__eyedropper" data-color-eyedropper aria-label="Pick color from screen" aria-pressed="false" data-tooltip="Pick color from screen"><img src="" alt=""></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+<script>
+(function(){var K=window.ExperimentKit;
+var a=K.ColorSelector(document.getElementById('a'));K.ColorSelector(document.getElementById('b'));K.Tooltip(document);setTimeout(function(){a.open();},50);
+})();
+</script></body></html>

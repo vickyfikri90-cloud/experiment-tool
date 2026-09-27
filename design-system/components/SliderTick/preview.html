@@ -1,0 +1,30 @@
+<!-- @dsCard group="Primitives" height=80 -->
+<!doctype html><html><head><link rel="stylesheet" href="../../tokens.css"><link rel="stylesheet" href="../bundle.css"><script src="../bundle.js"></script><meta charset="utf-8"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Inter:wght@100..900&display=swap" rel="stylesheet"><style>html,body{margin:0;background:var(--surface);font-family:var(--font-sans);}.stage{display:flex;gap:24px;padding:16px 0;align-items:flex-start;flex-wrap:wrap}.stage>.col{width:240px}</style></head><body>
+<div class="stage"><div class="col" id="a"><div class="slider-tick-field">
+  <span class="slider-tick-field__label">Slider Tick</span>
+  <div class="slider-field__row">
+    <div class="slider-value-wrap">
+      <input type="text" class="slider-value-input" value="50" inputmode="numeric">
+    </div>
+    <div class="slider-track-wrap">
+      <div class="slider-track">
+        <div class="slider-fill"></div>
+        <div class="slider-ticks" aria-hidden="true">
+          <span class="slider-tick-mark"></span>
+          <span class="slider-tick-mark"></span>
+          <span class="slider-tick-mark"></span>
+          <span class="slider-tick-mark"></span>
+          <span class="slider-tick-mark"></span>
+          <span class="slider-tick-mark"></span>
+          <span class="slider-tick-mark"></span>
+        </div>
+        <button type="button" class="slider-thumb" aria-label="Slider Tick"></button>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+<script>
+(function(){var K=window.ExperimentKit;
+K.SliderTick(document.getElementById('a'),{min:0,max:60,value:30});
+})();
+</script></body></html>

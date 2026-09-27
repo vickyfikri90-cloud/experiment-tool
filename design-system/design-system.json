@@ -1,0 +1,25 @@
+{
+  "v": 3,
+  "assetGroups": {},
+  "blobs": {},
+  "createdOnFiles": {
+    "at": "2026-09-26T07:06:45.323Z",
+    "v": 1
+  },
+  "docs": {
+    "readme": "project/README.md",
+    "sections": []
+  },
+  "groups": [],
+  "lastChange": {
+    "at": "2026-09-26T08:12:30Z",
+    "by": "Vicky",
+    "note": "Added SizeControl (W + H + lock aspect ratio)",
+    "via": "Claude (Cowork)"
+  },
+  "layout": "files",
+  "libraries": [],
+  "namespace": "ExperimentKit",
+  "sections": {},
+  "title": "Experiment Tool"
+}

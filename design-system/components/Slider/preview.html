@@ -1,0 +1,34 @@
+<!-- @dsCard group="Primitives" height=80 -->
+<!doctype html><html><head><link rel="stylesheet" href="../../tokens.css"><link rel="stylesheet" href="../bundle.css"><script src="../bundle.js"></script><meta charset="utf-8"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Inter:wght@100..900&display=swap" rel="stylesheet"><style>html,body{margin:0;background:var(--surface);font-family:var(--font-sans);}.stage{display:flex;gap:24px;padding:16px 0;align-items:flex-start;flex-wrap:wrap}.stage>.col{width:240px}</style></head><body>
+<div class="stage"><div class="col" id="a"><div class="slider-field">
+  <span class="slider-field__label">Slider</span>
+  <div class="slider-field__row">
+    <div class="slider-value-wrap">
+      <input type="text" class="slider-value-input" value="50" inputmode="numeric">
+    </div>
+    <div class="slider-track-wrap">
+      <div class="slider-track">
+        <div class="slider-fill"></div>
+        <button type="button" class="slider-thumb" aria-label="Slider"></button>
+      </div>
+    </div>
+  </div>
+</div></div><div class="col" id="b"><div class="slider-field">
+  <span class="slider-field__label">Duration</span>
+  <div class="slider-field__row">
+    <div class="slider-value-wrap">
+      <input type="text" class="slider-value-input" value="350" inputmode="numeric">
+    </div>
+    <div class="slider-track-wrap">
+      <div class="slider-track">
+        <div class="slider-fill"></div>
+        <button type="button" class="slider-thumb" aria-label="Slider"></button>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+<script>
+(function(){var K=window.ExperimentKit;
+K.Slider(document.getElementById('a'),{min:0,max:100,value:50});K.Slider(document.getElementById('b'),{min:0,max:1000,step:10,value:350});
+})();
+</script></body></html>

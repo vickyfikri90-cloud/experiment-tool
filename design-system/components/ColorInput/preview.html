@@ -1,0 +1,34 @@
+<!-- @dsCard group="Primitives" height=130 -->
+<!doctype html><html><head><link rel="stylesheet" href="../../tokens.css"><link rel="stylesheet" href="../bundle.css"><script src="../bundle.js"></script><meta charset="utf-8"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Inter:wght@100..900&display=swap" rel="stylesheet"><style>html,body{margin:0;background:var(--surface);font-family:var(--font-sans);}.stage{display:flex;gap:24px;padding:16px 0;align-items:flex-start;flex-wrap:wrap}.stage>.col{width:240px}</style></head><body>
+<div class="stage"><div class="col" id="a"><div class="field">
+  <span class="field-label">Background color</span>
+  <div class="row">
+    <div class="input-wrap color-wrap">
+      <span class="swatch" data-color-swatch></span>
+      <input type="text" data-color-hex value="F0F0F0">
+      <div class="opacity-wrap">
+        <input type="text" data-color-opacity value="100">
+        <span class="opacity-suffix">%</span>
+      </div>
+    </div>
+  </div>
+  <div class="color-preview" data-color-preview></div>
+</div></div><div class="col" id="b"><div class="field">
+  <span class="field-label">Text color</span>
+  <div class="row">
+    <div class="input-wrap color-wrap">
+      <span class="swatch" data-color-swatch></span>
+      <input type="text" data-color-hex value="23272E">
+      <div class="opacity-wrap">
+        <input type="text" data-color-opacity value="60">
+        <span class="opacity-suffix">%</span>
+      </div>
+    </div>
+  </div>
+  <div class="color-preview" data-color-preview></div>
+</div></div></div>
+<script>
+(function(){var K=window.ExperimentKit;
+K.ColorInput(document.getElementById('a'));K.ColorInput(document.getElementById('b'));
+})();
+</script></body></html>

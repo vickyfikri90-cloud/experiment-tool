@@ -1,0 +1,34 @@
+<!-- @dsCard group="Primitives" height=96 -->
+<!doctype html><html><head><link rel="stylesheet" href="../../tokens.css"><link rel="stylesheet" href="../bundle.css"><script src="../bundle.js"></script><meta charset="utf-8"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Inter:wght@100..900&display=swap" rel="stylesheet"><style>html,body{margin:0;background:var(--surface);font-family:var(--font-sans);}.stage{display:flex;gap:24px;padding:16px 0;align-items:flex-start;flex-wrap:wrap}.stage>.col{width:240px}</style></head><body>
+<div class="stage"><div class="col" id="a"><div class="field size-control">
+  <span class="field-label">Size</span>
+  <div class="row">
+    <div class="input-wrap">
+      <span class="input-icon">W</span>
+      <input type="text" data-size-width value="160" inputmode="decimal" aria-label="Width">
+    </div>
+    <div class="input-wrap">
+      <span class="input-icon">H</span>
+      <input type="text" data-size-height value="48" inputmode="decimal" aria-label="Height">
+    </div>
+    <button type="button" class="size-control__lock" data-size-lock aria-pressed="false" aria-label="Lock aspect ratio"><img src="" alt=""></button>
+  </div>
+</div></div><div class="col" id="b"><div class="field size-control">
+  <span class="field-label">Image size (locked)</span>
+  <div class="row">
+    <div class="input-wrap">
+      <span class="input-icon">W</span>
+      <input type="text" data-size-width value="1920" inputmode="decimal" aria-label="Width">
+    </div>
+    <div class="input-wrap">
+      <span class="input-icon">H</span>
+      <input type="text" data-size-height value="1080" inputmode="decimal" aria-label="Height">
+    </div>
+    <button type="button" class="size-control__lock" data-size-lock aria-pressed="false" aria-label="Lock aspect ratio"><img src="" alt=""></button>
+  </div>
+</div></div></div>
+<script>
+(function(){var K=window.ExperimentKit;
+K.SizeControl(document.getElementById('a'));K.SizeControl(document.getElementById('b'),{locked:true});K.Tooltip(document);
+})();
+</script></body></html>

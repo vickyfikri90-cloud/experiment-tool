@@ -1,0 +1,129 @@
+{
+  "manifestVersion": 3,
+  "name": "Experiment Tool",
+  "namespace": "ExperimentKit",
+  "files": [
+    "components/Checkbox/README.md",
+    "components/ColorInput/README.md",
+    "components/ColorSelector/README.md",
+    "components/ControlPanel/README.md",
+    "components/CubicBezierInput/README.md",
+    "components/DimensionControl/README.md",
+    "components/Divider/README.md",
+    "components/Field/README.md",
+    "components/FileUpload/README.md",
+    "components/ImageUpload/README.md",
+    "components/InputWrap/README.md",
+    "components/MultiImageUpload/README.md",
+    "components/OptionSelector/README.md",
+    "components/SizeControl/README.md",
+    "components/Slider/README.md",
+    "components/SliderTick/README.md",
+    "components/SnippetOutput/README.md",
+    "components/Toggle/README.md",
+    "components/Tooltip/README.md",
+    "components/bundle.css",
+    "components/bundle.js",
+    "components/index.d.ts",
+    "tokens.css"
+  ],
+  "libraries": [],
+  "components": [
+    {
+      "name": "ControlPanel",
+      "group": "Shell",
+      "summary": "The shell for every experiment: a live preview area on the left and a 241px scrollable control panel on the right."
+    },
+    {
+      "name": "Field",
+      "group": "Primitives",
+      "summary": "The wrapper for one labelled panel control: a .field-label above one or more .rows."
+    },
+    {
+      "name": "InputWrap",
+      "group": "Primitives",
+      "summary": "The 24px grey input used everywhere: a text/number with an optional letter or icon prefix and optional suffix."
+    },
+    {
+      "name": "DimensionControl",
+      "group": "Primitives",
+      "summary": "Figma-style width/height input that switches between a fixed pixel value and \"Hug Content\"."
+    },
+    {
+      "name": "ColorInput",
+      "group": "Primitives",
+      "summary": "Hex + opacity field with a live swatch and an optional full-width colour preview."
+    },
+    {
+      "name": "SnippetOutput",
+      "group": "Primitives",
+      "summary": "A read-only code box showing the experiment's exported HTML, with a Download HTML button."
+    },
+    {
+      "name": "Slider",
+      "group": "Primitives",
+      "summary": "A numeric value box beside a draggable 144px track."
+    },
+    {
+      "name": "SliderTick",
+      "group": "Primitives",
+      "summary": "A slider whose track shows tick marks and snaps to them."
+    },
+    {
+      "name": "Divider",
+      "group": "Primitives",
+      "summary": "A 1px hairline that separates sections of the control panel."
+    },
+    {
+      "name": "OptionSelector",
+      "group": "Primitives",
+      "summary": "A searchable dropdown: type to filter, arrow keys to move, Enter or click to choose."
+    },
+    {
+      "name": "Toggle",
+      "group": "Primitives",
+      "summary": "An on/off switch row: a 24×16 track with a label, built on ."
+    },
+    {
+      "name": "Checkbox",
+      "group": "Primitives",
+      "summary": "A checkbox row with checked, unchecked and indeterminate states, built on ."
+    },
+    {
+      "name": "CubicBezierInput",
+      "group": "Primitives",
+      "summary": "A cubic-bézier easing editor: a 208×200 draggable curve above a text input, kept in sync."
+    },
+    {
+      "name": "FileUpload",
+      "group": "Primitives",
+      "summary": "A single-file picker in the shape of a 24px panel input: a file icon, the file name and size, and a clear button."
+    },
+    {
+      "name": "ImageUpload",
+      "group": "Primitives",
+      "summary": "A single-image drop zone: a 208×120 input-bg area that shows the image once chosen, with a file-name row and a clear button underneath."
+    },
+    {
+      "name": "MultiImageUpload",
+      "group": "Primitives",
+      "summary": "A three-column grid of square thumbnails with an add tile."
+    },
+    {
+      "name": "ColorSelector",
+      "group": "Primitives",
+      "summary": "A color field with a picker popover."
+    },
+    {
+      "name": "Tooltip",
+      "group": "Primitives",
+      "summary": "A small black tooltip with white text that labels controls on hover or keyboard focus."
+    },
+    {
+      "name": "SizeControl",
+      "group": "Primitives",
+      "summary": "Width and height inputs side by side in one row, with a lock aspect ratio button."
+    }
+  ],
+  "assetGroups": []
+}

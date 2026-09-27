@@ -1,0 +1,35 @@
+<!-- @dsCard group="Primitives" height=240 -->
+<!doctype html><html><head><link rel="stylesheet" href="../../tokens.css"><link rel="stylesheet" href="../bundle.css"><script src="../bundle.js"></script><meta charset="utf-8"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Inter:wght@100..900&display=swap" rel="stylesheet"><style>html,body{margin:0;background:var(--surface);font-family:var(--font-sans);}.stage{display:flex;gap:24px;padding:16px 0;align-items:flex-start;flex-wrap:wrap}.stage>.col{width:240px}</style></head><body>
+<div class="stage"><div class="col" id="a"><div class="field multi-image-upload">
+  <span class="field-label">Images</span>
+  <div class="multi-image-upload__grid" role="list">
+    <button type="button" class="multi-image-upload__add" aria-label="Add images"><img src="" alt="" data-icon="plus"></button>
+    <input type="file" class="upload-file-input" accept="image/*" multiple tabindex="-1" aria-hidden="true">
+  </div>
+  <div class="multi-image-upload__footer">
+    <span class="upload-meta" data-upload-count></span>
+    <button type="button" class="multi-image-upload__clear" data-upload-clear hidden>Clear all</button>
+  </div>
+</div></div><div class="col" id="b"><div class="field multi-image-upload">
+  <span class="field-label">Carousel slides</span>
+  <div class="multi-image-upload__grid" role="list">
+    <button type="button" class="multi-image-upload__add" aria-label="Add images"><img src="" alt="" data-icon="plus"></button>
+    <input type="file" class="upload-file-input" accept="image/*" multiple tabindex="-1" aria-hidden="true">
+  </div>
+  <div class="multi-image-upload__footer">
+    <span class="upload-meta" data-upload-count></span>
+    <button type="button" class="multi-image-upload__clear" data-upload-clear hidden>Clear all</button>
+  </div>
+</div></div></div>
+<script>
+(function(){var K=window.ExperimentKit;
+function sample(i,w,h){var c=document.createElement('canvas');c.width=w||240;c.height=h||240;var x=c.getContext('2d');
+var bg=['#23272e','#f5f5f5','#4372ff','#000000','#eeeeee','#2952cc'][i%6];var fg=['#4372ff','#23272e','#ffffff','#f5f5f5','#23272e','#f5f5f5'][i%6];
+x.fillStyle=bg;x.fillRect(0,0,c.width,c.height);x.fillStyle=fg;
+if(i%3===0){x.beginPath();x.arc(c.width*.62,c.height*.45,c.height*.28,0,Math.PI*2);x.fill();}
+else if(i%3===1){x.fillRect(c.width*.18,c.height*.3,c.width*.64,c.height*.4);}
+else{for(var r=0;r<4;r++){x.fillRect(c.width*.15,c.height*(.2+r*.17),c.width*(.7-r*.12),c.height*.1);}}
+return c.toDataURL('image/png');}
+K.MultiImageUpload(document.getElementById('a'),{max:6});K.MultiImageUpload(document.getElementById('b'),{max:6,value:[0,1,2,3].map(function(i){return {url:sample(i),name:'slide-'+(i+1)+'.png'};})});
+})();
+</script></body></html>
