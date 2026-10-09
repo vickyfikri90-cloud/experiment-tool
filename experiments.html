@@ -2068,6 +2068,56 @@
   position: relative;
 }
 
+.ripple-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 56px;
+  padding: 0 28px;
+  border: none;
+  border-radius: 28px;
+  background: #000;
+  color: #fff;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ripple-button:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.35);
+  outline-offset: 3px;
+}
+
+/* Dot grid sits inside the button (clipped to its shape), under the label. Invisible at rest. */
+.ripple-button__dots {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ripple-button__dots svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ripple-button__label {
+  position: relative;
+  z-index: 1;
+}
+
   </style>
 </head>
 <body>
@@ -2153,6 +2203,10 @@
           <div class="heading-entrance__dodge"></div>
         </div>
         <button type="button" class="heading-entrance-restart" id="exp-heading-entrance-restart">Restart</button>
+      </div>
+
+      <div class="cp-preview" data-experiment-preview="button-ripple" hidden>
+        <button id="exp-button-ripple-btn" class="ripple-button" type="button">Click me</button>
       </div>
     </div>
 
@@ -4175,6 +4229,277 @@
       </div>
 
       <div id="exp-heading-entrance-snippet-root">
+        <div class="field code-field">
+          <span class="field-label">Code</span>
+          <textarea class="snippet-output" data-snippet-output readonly spellcheck="false"></textarea>
+          <button type="button" class="download-btn" data-snippet-download>Download HTML</button>
+        </div>
+      </div>
+      </div>
+      <div data-experiment-panel="button-ripple" hidden>
+      <div class="field">
+        <label class="field-label" for="exp-button-ripple-label-text">Text</label>
+        <div class="row">
+          <div class="input-wrap input-wrap--label">
+            <input type="text" id="exp-button-ripple-label-text" value="Click me">
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">Dimensions</span>
+        <div class="row">
+          <div class="input-wrap input-wrap--dimension" data-dimension-id="width">
+            <span class="input-icon">W</span>
+            <div class="dimension-control">
+              <span class="dimension-mode-label">Hug (0)</span>
+              <input type="text" class="dimension-fixed-input" value="160">
+            </div>
+            <span class="chevron-wrap dimension-chevron" role="button" tabindex="0" aria-label="Width mode">
+              <img src="" alt="" data-icon="chevron">
+            </span>
+            <div class="dimension-menu">
+              <button type="button" data-dimension-mode="fixed">Fixed</button>
+              <button type="button" data-dimension-mode="hug">Hug Content</button>
+            </div>
+          </div>
+          <div class="input-wrap input-wrap--dimension" data-dimension-id="height">
+            <span class="input-icon">H</span>
+            <div class="dimension-control is-fixed">
+              <span class="dimension-mode-label">Hug (0)</span>
+              <input type="text" class="dimension-fixed-input" value="56">
+            </div>
+            <span class="chevron-wrap dimension-chevron" role="button" tabindex="0" aria-label="Height mode">
+              <img src="" alt="" data-icon="chevron">
+            </span>
+            <div class="dimension-menu">
+              <button type="button" data-dimension-mode="fixed">Fixed</button>
+              <button type="button" data-dimension-mode="hug">Hug Content</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">Font size / Weight</span>
+        <div class="row">
+          <div class="input-wrap">
+            <input type="text" id="exp-button-ripple-font-size" value="16">
+            <div class="suffix-wrap"><span>px</span></div>
+          </div>
+          <div class="input-wrap">
+            <span class="input-icon">W</span>
+            <input type="text" id="exp-button-ripple-font-weight" value="500">
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">Padding X / Radius</span>
+        <div class="row">
+          <div class="input-wrap">
+            <input type="text" id="exp-button-ripple-padding-x" value="28">
+            <div class="suffix-wrap"><span>px</span></div>
+          </div>
+          <div class="input-wrap">
+            <input type="text" id="exp-button-ripple-radius" value="28">
+            <div class="suffix-wrap"><span>px</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="exp-button-ripple-bg-color-root">
+        <div class="field">
+          <span class="field-label">Background color</span>
+          <div class="row">
+            <div class="input-wrap color-wrap color-selector__wrap">
+              <button type="button" class="color-selector__trigger" data-color-trigger aria-haspopup="dialog" aria-expanded="false" aria-label="Open color picker"><span class="swatch" data-color-swatch></span></button>
+              <input type="text" data-color-hex value="000000" spellcheck="false" aria-label="Hex">
+              <div class="opacity-wrap">
+                <input type="text" data-color-opacity value="100" aria-label="Opacity">
+                <span class="opacity-suffix">%</span>
+              </div>
+              <div class="color-selector__popover" role="dialog" aria-label="Color picker">
+                <div class="color-selector__sv" data-color-sv tabindex="0" role="slider" aria-label="Saturation and brightness"><span class="color-selector__thumb"></span></div>
+                <div class="color-selector__hue" data-color-hue tabindex="0" role="slider" aria-label="Hue" aria-valuemin="0" aria-valuemax="360"><span class="color-selector__thumb"></span></div>
+                <div class="color-selector__alpha" data-color-alpha tabindex="0" role="slider" aria-label="Opacity" aria-valuemin="0" aria-valuemax="100"><span class="color-selector__alpha-fill"></span><span class="color-selector__thumb"></span></div>
+                <div class="color-selector__hsb">
+                  <div class="input-wrap"><span class="input-icon">H</span><input type="text" data-color-h inputmode="numeric" aria-label="Hue (0–360)"></div>
+                  <div class="input-wrap"><span class="input-icon">S</span><input type="text" data-color-s inputmode="numeric" aria-label="Saturation (0–100)"></div>
+                  <div class="input-wrap"><span class="input-icon">B</span><input type="text" data-color-b inputmode="numeric" aria-label="Brightness (0–100)"></div>
+                  <button type="button" class="color-selector__eyedropper" data-color-eyedropper aria-label="Pick color from screen" aria-pressed="false" data-tooltip="Pick color from screen"><img src="" alt=""></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="exp-button-ripple-text-color-root">
+        <div class="field">
+          <span class="field-label">Text color</span>
+          <div class="row">
+            <div class="input-wrap color-wrap color-selector__wrap">
+              <button type="button" class="color-selector__trigger" data-color-trigger aria-haspopup="dialog" aria-expanded="false" aria-label="Open color picker"><span class="swatch" data-color-swatch></span></button>
+              <input type="text" data-color-hex value="FFFFFF" spellcheck="false" aria-label="Hex">
+              <div class="opacity-wrap">
+                <input type="text" data-color-opacity value="100" aria-label="Opacity">
+                <span class="opacity-suffix">%</span>
+              </div>
+              <div class="color-selector__popover" role="dialog" aria-label="Color picker">
+                <div class="color-selector__sv" data-color-sv tabindex="0" role="slider" aria-label="Saturation and brightness"><span class="color-selector__thumb"></span></div>
+                <div class="color-selector__hue" data-color-hue tabindex="0" role="slider" aria-label="Hue" aria-valuemin="0" aria-valuemax="360"><span class="color-selector__thumb"></span></div>
+                <div class="color-selector__alpha" data-color-alpha tabindex="0" role="slider" aria-label="Opacity" aria-valuemin="0" aria-valuemax="100"><span class="color-selector__alpha-fill"></span><span class="color-selector__thumb"></span></div>
+                <div class="color-selector__hsb">
+                  <div class="input-wrap"><span class="input-icon">H</span><input type="text" data-color-h inputmode="numeric" aria-label="Hue (0–360)"></div>
+                  <div class="input-wrap"><span class="input-icon">S</span><input type="text" data-color-s inputmode="numeric" aria-label="Saturation (0–100)"></div>
+                  <div class="input-wrap"><span class="input-icon">B</span><input type="text" data-color-b inputmode="numeric" aria-label="Brightness (0–100)"></div>
+                  <button type="button" class="color-selector__eyedropper" data-color-eyedropper aria-label="Pick color from screen" aria-pressed="false" data-tooltip="Pick color from screen"><img src="" alt=""></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="exp-button-ripple-glow-color-root">
+        <div class="field">
+          <span class="field-label">Tile color</span>
+          <div class="row">
+            <div class="input-wrap color-wrap color-selector__wrap">
+              <button type="button" class="color-selector__trigger" data-color-trigger aria-haspopup="dialog" aria-expanded="false" aria-label="Open color picker"><span class="swatch" data-color-swatch></span></button>
+              <input type="text" data-color-hex value="FFFFFF" spellcheck="false" aria-label="Hex">
+              <div class="opacity-wrap">
+                <input type="text" data-color-opacity value="100" aria-label="Opacity">
+                <span class="opacity-suffix">%</span>
+              </div>
+              <div class="color-selector__popover" role="dialog" aria-label="Color picker">
+                <div class="color-selector__sv" data-color-sv tabindex="0" role="slider" aria-label="Saturation and brightness"><span class="color-selector__thumb"></span></div>
+                <div class="color-selector__hue" data-color-hue tabindex="0" role="slider" aria-label="Hue" aria-valuemin="0" aria-valuemax="360"><span class="color-selector__thumb"></span></div>
+                <div class="color-selector__alpha" data-color-alpha tabindex="0" role="slider" aria-label="Opacity" aria-valuemin="0" aria-valuemax="100"><span class="color-selector__alpha-fill"></span><span class="color-selector__thumb"></span></div>
+                <div class="color-selector__hsb">
+                  <div class="input-wrap"><span class="input-icon">H</span><input type="text" data-color-h inputmode="numeric" aria-label="Hue (0–360)"></div>
+                  <div class="input-wrap"><span class="input-icon">S</span><input type="text" data-color-s inputmode="numeric" aria-label="Saturation (0–100)"></div>
+                  <div class="input-wrap"><span class="input-icon">B</span><input type="text" data-color-b inputmode="numeric" aria-label="Brightness (0–100)"></div>
+                  <button type="button" class="color-selector__eyedropper" data-color-eyedropper aria-label="Pick color from screen" aria-pressed="false" data-tooltip="Pick color from screen"><img src="" alt=""></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">Tile size / Gap</span>
+        <div class="row">
+          <div class="input-wrap">
+            <input type="text" id="exp-button-ripple-tile-size" value="6">
+            <div class="suffix-wrap"><span>px</span></div>
+          </div>
+          <div class="input-wrap">
+            <input type="text" id="exp-button-ripple-tile-gap" value="1">
+            <div class="suffix-wrap"><span>px</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">Waves / Wavelength</span>
+        <div class="row">
+          <div class="input-wrap">
+            <span class="input-icon">#</span>
+            <input type="text" id="exp-button-ripple-waves" value="3">
+          </div>
+          <div class="input-wrap">
+            <input type="text" id="exp-button-ripple-wavelength" value="14">
+            <div class="suffix-wrap"><span>px</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="exp-button-ripple-glow">Glow</label>
+        <div class="row">
+          <div class="input-wrap">
+            <input type="text" id="exp-button-ripple-glow" value="2">
+            <div class="suffix-wrap"><span>px</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">Intensity / Duration</span>
+        <div class="row">
+          <div class="input-wrap">
+            <input type="text" id="exp-button-ripple-intensity" value="45">
+            <div class="suffix-wrap"><span>%</span></div>
+          </div>
+          <div class="input-wrap">
+            <input type="text" id="exp-button-ripple-duration" value="1200">
+            <div class="suffix-wrap"><span>ms</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">Ripples / Gap</span>
+        <div class="row">
+          <div class="input-wrap">
+            <span class="input-icon">#</span>
+            <input type="text" id="exp-button-ripple-count" value="2">
+          </div>
+          <div class="input-wrap">
+            <input type="text" id="exp-button-ripple-gap" value="220">
+            <div class="suffix-wrap"><span>ms</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="exp-button-ripple-fade">Fade out</label>
+        <div class="row">
+          <div class="input-wrap">
+            <input type="text" id="exp-button-ripple-fade" value="60">
+            <div class="suffix-wrap"><span>%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">Origin</span>
+        <div id="exp-button-ripple-origin-root" class="option-selector option-selector--nested">
+          <div class="row">
+            <div class="input-wrap input-wrap--label option-selector__wrap">
+              <input type="text" class="option-selector__input" value="Click point" autocomplete="off" spellcheck="false">
+              <div class="option-selector__menu" role="listbox"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="exp-button-ripple-easing-root">
+      <div class="field cubic-bezier-field">
+        <span class="field-label">Easing</span>
+        <div class="cubic-bezier-editor" data-bezier-editor>
+          <svg class="cubic-bezier-svg" data-bezier-svg viewBox="0 0 208 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="208" height="200" rx="5" fill="#F5F5F5"/>
+            <line class="cubic-bezier-guide" x1="29" y1="25" x2="179" y2="25"/>
+            <line class="cubic-bezier-guide" x1="29" y1="175" x2="179" y2="175"/>
+            <path class="cubic-bezier-curve" data-bezier-curve></path>
+            <line class="cubic-bezier-handle-line" data-bezier-line1></line>
+            <line class="cubic-bezier-handle-line" data-bezier-line2></line>
+            <circle class="cubic-bezier-handle" data-bezier-p1 r="6" tabindex="0" role="slider" aria-label="First control point"></circle>
+            <circle class="cubic-bezier-handle" data-bezier-p2 r="6" tabindex="0" role="slider" aria-label="Second control point"></circle>
+          </svg>
+        </div>
+        <div class="input-wrap cubic-bezier-value-input">
+          <span class="input-icon"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMCAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEwIDEuNjY3NTlDMTAgMS41NTcwOCA5Ljk1NjEgMS40NTExIDkuODc3OTYgMS4zNzI5NkM5Ljc5OTgyIDEuMjk0ODIgOS42OTM4NCAxLjI1MDkyIDkuNTgzMzQgMS4yNTA5MkM4LjYyOTM4IDEuMjUwNTUgNy42OTQyIDEuNTE2IDYuODgyNyAyLjAxNzVDNi4wNzEyIDIuNTE5IDUuNDE1NTEgMy4yMzY3MSA0Ljk4OTE3IDQuMDkwMDlMNC4yNjUgNS41MzkyNkMzLjkwNzg5IDYuMjU0MTEgMy4zNTg2NCA2Ljg1NTMyIDIuNjc4ODkgNy4yNzU0MkMxLjk5OTEzIDcuNjk1NTIgMS4yMTU3NiA3LjkxNzg5IDAuNDE2NjY4IDcuOTE3NTlDMC4zMDYxNjEgNy45MTc1OSAwLjIwMDE4IDcuOTYxNDkgMC4xMjIwNCA4LjAzOTYzQzAuMDQzODk5NyA4LjExNzc3IDkuMjM0MTVlLTA3IDguMjIzNzUgOS4yMzQxNWUtMDcgOC4zMzQyNkM5LjIzNDE1ZS0wNyA4LjQ0NDc3IDAuMDQzODk5NyA4LjU1MDc1IDAuMTIyMDQgOC42Mjg4OUMwLjIwMDE4IDguNzA3MDMgMC4zMDYxNjEgOC43NTA5MyAwLjQxNjY2OCA4Ljc1MDkzQzEuMzcwNjIgOC43NTEzIDIuMzA1ODEgOC40ODU4NCAzLjExNzMgNy45ODQzNEMzLjkyODggNy40ODI4NSA0LjU4NDUgNi43NjUxNCA1LjAxMDgzIDUuOTExNzZMNS43MzUgNC40NjI1OUM2LjA5MjEyIDMuNzQ3NzMgNi42NDEzNiAzLjE0NjUzIDcuMzIxMTIgMi43MjY0M0M4LjAwMDg3IDIuMzA2MzMgOC43ODQyNCAyLjA4Mzk2IDkuNTgzMzQgMi4wODQyNkM5LjY5Mzg0IDIuMDg0MjYgOS43OTk4MiAyLjA0MDM2IDkuODc3OTYgMS45NjIyMkM5Ljk1NjEgMS44ODQwOCAxMCAxLjc3ODEgMTAgMS42Njc1OVpNNS44MzMzNCAxLjY2NzU5QzUuODMzMzQgMS41NTcwOCA1Ljc4OTQ0IDEuNDUxMSA1LjcxMTMgMS4zNzI5NkM1LjYzMzE2IDEuMjk0ODIgNS41MjcxOCAxLjI1MDkyIDUuNDE2NjcgMS4yNTA5MkgzLjI3OTE3QzMuMTc4MTEgMC44NTc5NyAyLjkzNzExIDAuNTE1NDA4IDIuNjAxNCAwLjI4NzUzNUMyLjI2NTY5IDAuMDU5NjYyNCAxLjg1ODM2IC0wLjAzNzg1MyAxLjQ1NTg1IDAuMDEzMjkxMkMxLjA1MzM1IDAuMDY0NDM1NSAwLjY4MzM0NyAwLjI2MDcyMyAwLjQxNTI5NiAwLjU2NTMxMkMwLjE0NzI0NCAwLjg2OTkwMSAtMC4wMDA0MjYwNzEgMS4yNjE4NSA5LjIzNDE1ZS0wNyAxLjY2NzU5QzAuMDAxMTU2ODYgMi4wNzI0MSAwLjE0OTYxNCAyLjQ2Mjk3IDAuNDE3NjUxIDIuNzY2MzVDMC42ODU2ODkgMy4wNjk3MyAxLjA1NDk4IDMuMjY1MTggMS40NTY1OCAzLjMxNjJDMS44NTgxNyAzLjM2NzIzIDIuMjY0NjEgMy4yNzAzNSAyLjYgMy4wNDM2NUMyLjkzNTM5IDIuODE2OTUgMy4xNzY4MSAyLjQ3NTkyIDMuMjc5MTcgMi4wODQyNkg1LjQxNjY3QzUuNTI3MTggMi4wODQyNiA1LjYzMzE2IDIuMDQwMzYgNS43MTEzIDEuOTYyMjJDNS43ODk0NCAxLjg4NDA4IDUuODMzMzQgMS43NzgxIDUuODMzMzQgMS42Njc1OVpNMi41IDEuNjY3NTlDMi41IDEuODg4NiAyLjQxMjIgMi4xMDA1NyAyLjI1NTkyIDIuMjU2ODVDMi4wOTk2NCAyLjQxMzEzIDEuODg3NjggMi41MDA5MiAxLjY2NjY3IDIuNTAwOTJDMS40NDU2NSAyLjUwMDkyIDEuMjMzNjkgMi40MTMxMyAxLjA3NzQxIDIuMjU2ODVDMC45MjExMzIgMi4xMDA1NyAwLjgzMzMzNCAxLjg4ODYgMC44MzMzMzQgMS42Njc1OUMwLjgzMzMzNCAxLjQ0NjU4IDAuOTIxMTMyIDEuMjM0NjIgMS4wNzc0MSAxLjA3ODM0QzEuMjMzNjkgMC45MjIwNTUgMS40NDU2NSAwLjgzNDI1NyAxLjY2NjY3IDAuODM0MjU3QzEuODg3NjggMC44MzQyNTcgMi4wOTk2NCAwLjkyMjA1NSAyLjI1NTkyIDEuMDc4MzRDMi40MTMyIDEuMjM0NjIgMi41IDEuNDQ2NTggMi41IDEuNjY3NTlaTTEwIDguMzM0MjZDMTAuMDAxMyA3LjkyODE1IDkuODU0MDQgNy41MzU1OCA5LjU4NjA2IDcuMjMwNDRDOS4zMTgwOCA2LjkyNTI5IDguOTQ3ODEgNi43Mjg2MSA4LjU0NDk0IDYuNjc3NDFDOC4xNDIwNyA2LjYyNjIgNy43MzQzNyA2LjcyNDAxIDcuMzk4NTggNi45NTI0MUM3LjA2Mjc4IDcuMTgwODIgNi44MjIwNCA3LjUyNDA4IDYuNzIxNjcgNy45MTc1OUg0LjU4MzMzQzQuNDcyODMgNy45MTc1OSA0LjM2Njg1IDcuOTYxNDkgNC4yODg3MSA4LjAzOTYzQzQuMjEwNTcgOC4xMTc3NyA0LjE2NjY3IDguMjIzNzUgNC4xNjY2NyA4LjMzNDI2QzQuMTY2NjcgOC40NDQ3NyA0LjIxMDU3IDguNTUwNzUgNC4yODg3MSA4LjYyODg5QzQuMzY2ODUgOC43MDcwMyA0LjQ3MjgzIDguNzUwOTMgNC41ODMzMyA4Ljc1MDkzSDYuNzIxNjdDNi44MjIwNCA5LjE0NDQ0IDcuMDYyNzggOS40ODc3IDcuMzk4NTggOS43MTYxQzcuNzM0MzcgOS45NDQ1MSA4LjE0MjA3IDEwLjA0MjMgOC41NDQ5NCA5Ljk5MTExQzguOTQ3ODEgOS45Mzk5MSA5LjMxODA4IDkuNzQzMjMgOS41ODYwNiA5LjQzODA4QzkuODU0MDQgOS4xMzI5NCAxMC4wMDEzIDguNzQwMzcgMTAgOC4zMzQyNlpNOS4xNjY2NyA4LjMzNDI2QzkuMTY2NjcgOC41NTUyNyA5LjA3ODg3IDguNzY3MjMgOC45MjI1OSA4LjkyMzUxQzguNzY2MzEgOS4wNzk3OSA4LjU1NDM1IDkuMTY3NTkgOC4zMzMzNCA5LjE2NzU5QzguMTEyMzIgOS4xNjc1OSA3LjkwMDM2IDkuMDc5NzkgNy43NDQwOCA4LjkyMzUxQzcuNTg3OCA4Ljc2NzIzIDcuNSA4LjU1NTI3IDcuNSA4LjMzNDI2QzcuNSA4LjExMzI1IDcuNTg3OCA3LjkwMTI4IDcuNzQ0MDggNy43NDVDNy45MDAzNiA3LjU4ODcyIDguMTEyMzIgNy41MDA5MyA4LjMzMzM0IDcuNTAwOTNDOC41NTQzNSA3LjUwMDkzIDguNzY2MzEgNy41ODg3MiA4LjkyMjU5IDcuNzQ1QzkuMDc4ODcgNy45MDEyOCA5LjE2NjY3IDguMTEzMjUgOS4xNjY2NyA4LjMzNDI2WiIgZmlsbD0iYmxhY2siIGZpbGwtb3BhY2l0eT0iMC41Ii8+Cjwvc3ZnPgo=" alt=""></span>
+          <input type="text" data-bezier-text value="0.25, 0.1, 0.25, 1" spellcheck="false" autocomplete="off">
+        </div>
+      </div>
+      </div>
+
+      <div id="exp-button-ripple-snippet-root">
         <div class="field code-field">
           <span class="field-label">Code</span>
           <textarea class="snippet-output" data-snippet-output readonly spellcheck="false"></textarea>
@@ -9995,6 +10320,233 @@ window.initHeadingEntrance = function initHeadingEntrance(root, options = {}) {
   return { element: wrap, set, play };
 };
 
+window.initRippleButton = function initRippleButton(root, options = {}) {
+  const btn = root.querySelector('.ripple-button') || root;
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const uid = `ripple-glow-${Math.random().toString(36).slice(2, 8)}`;
+
+  let dotColor = options.dotColor ?? '#FFFFFF';
+  // Fixed LED matrix: equal square tiles separated by a gap; the wave only changes brightness.
+  let tileSize = options.tileSize ?? 6;
+  let tileGap = options.tileGap ?? 1;
+  let waves = options.waves ?? 3;
+  let wavelength = options.wavelength ?? 14;
+  let glow = options.glow ?? 2;
+  let intensity = options.intensity ?? 45;
+  let duration = options.duration ?? 1200;
+  let count = options.count ?? 2;
+  let gap = options.gap ?? 220;
+  let fade = options.fade ?? 60;
+  let origin = options.origin ?? 'click';
+  let easingRaw = options.easingRaw ?? '0.25, 0.1, 0.25, 1';
+
+  const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const ripples = [];
+  let dots = [];
+  let frame = 0;
+
+  function svg(tag, attrs = {}) {
+    const node = document.createElementNS(SVG_NS, tag);
+    Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, value));
+    return node;
+  }
+
+  // The label is wrapped once; the layer is added once so re-init on the same button is safe.
+  let label = btn.querySelector('.ripple-button__label');
+  if (!label) {
+    label = document.createElement('span');
+    label.className = 'ripple-button__label';
+    label.textContent = btn.textContent.trim();
+    btn.textContent = '';
+    btn.appendChild(label);
+  }
+
+  let layer = btn.querySelector('.ripple-button__dots');
+  if (layer) layer.remove();
+  layer = document.createElement('span');
+  layer.className = 'ripple-button__dots';
+  layer.setAttribute('aria-hidden', 'true');
+
+  // Tiles are drawn once crisp, then again through a blur for a faint halo (the "glow").
+  const canvas = svg('svg', { focusable: 'false' });
+  const defs = svg('defs');
+  const filter = svg('filter', { id: `${uid}-blur`, x: '-50%', y: '-50%', width: '200%', height: '200%' });
+  const blur = svg('feGaussianBlur', { stdDeviation: glow });
+  filter.appendChild(blur);
+  defs.appendChild(filter);
+  const grid = svg('g', { id: `${uid}-grid` });
+  const halo = svg('use', { href: `#${uid}-grid`, filter: `url(#${uid}-blur)`, opacity: 0.9 });
+  canvas.append(defs, halo, grid);
+  layer.appendChild(canvas);
+  btn.insertBefore(layer, label);
+
+  // Minimal cubic-bezier(x1, y1, x2, y2) solver for the wave's travel curve.
+  function makeEasing() {
+    const parts = String(easingRaw).replace(/cubic-bezier\(|\)/g, '').split(',').map((n) => parseFloat(n));
+    if (parts.length !== 4 || !parts.every(Number.isFinite)) return (t) => t;
+    const [x1, y1, x2, y2] = parts;
+    const bez = (t, a, b) => 3 * a * t * (1 - t) ** 2 + 3 * b * t * t * (1 - t) + t ** 3;
+    return (x) => {
+      let lo = 0;
+      let hi = 1;
+      for (let i = 0; i < 20; i += 1) {
+        const mid = (lo + hi) / 2;
+        if (bez(mid, x1, x2) < x) lo = mid;
+        else hi = mid;
+      }
+      return bez((lo + hi) / 2, y1, y2);
+    };
+  }
+  let ease = makeEasing();
+
+  function buildGrid() {
+    const width = btn.offsetWidth;
+    const height = btn.offsetHeight;
+    const size = Math.max(1, tileSize);
+    const step = size + Math.max(0, tileGap);
+    // Fill edge to edge (the button's radius clips the corners), centered on the button.
+    const cols = Math.ceil(width / step) + 1;
+    const rows = Math.ceil(height / step) + 1;
+    const offsetX = (width - (cols * step - tileGap)) / 2;
+    const offsetY = (height - (rows * step - tileGap)) / 2;
+
+    canvas.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    grid.textContent = '';
+    grid.setAttribute('fill', dotColor);
+    dots = [];
+
+    for (let row = 0; row < rows; row += 1) {
+      for (let col = 0; col < cols; col += 1) {
+        const left = offsetX + col * step;
+        const top = offsetY + row * step;
+        const node = svg('rect', { x: left, y: top, width: size, height: size, opacity: 0 });
+        grid.appendChild(node);
+        dots.push({ node, x: left + size / 2, y: top + size / 2 });
+      }
+    }
+  }
+
+  function render(now) {
+    const reduced = motionQuery.matches;
+    const train = Math.max(1, waves) * Math.max(2, wavelength);
+
+    for (let i = ripples.length - 1; i >= 0; i -= 1) {
+      if (now - ripples[i].start >= ripples[i].time) ripples.splice(i, 1);
+    }
+
+    dots.forEach((dot) => {
+      let env = 0;
+      let wave = 0;
+
+      ripples.forEach((ripple) => {
+        const t = (now - ripple.start) / ripple.time;
+        if (t < 0) return;
+        if (reduced) {
+          env = Math.max(env, Math.sin(Math.PI * t));
+          return;
+        }
+        // Wave front travels until the whole train has left the farthest dot.
+        const progress = ease(t);
+        const front = progress * (ripple.reach + train);
+        const behind = front - Math.hypot(dot.x - ripple.x, dot.y - ripple.y);
+        if (behind <= 0 || behind >= train) return;
+        // Flat-topped envelope: quick ramp at the front, softer tail, full strength in between.
+        const smooth = (v) => { const c = Math.min(1, Math.max(0, v)); return c * c * (3 - 2 * c); };
+        const shape = smooth(behind / (train * 0.2)) * smooth((train - behind) / (train * 0.4));
+        // Dims as it travels; `fade` 0 = no dimming, 100 = fades linearly to nothing.
+        const decay = 1 - (fade / 100) * t;
+        const e = shape * decay * Math.min(1, (1 - t) * 6);
+        env = Math.max(env, e);
+        wave += e * Math.cos((2 * Math.PI * behind) / wavelength);
+      });
+
+      // Crest → tile lit, trough → tile dark, so the ripple reads as rings of lit tiles.
+      const crest = env > 0 ? 0.5 + 0.5 * Math.max(-1, Math.min(1, wave / env)) : 0;
+      // Perceptual lift: linear opacity on black reads too dim in the mid tones.
+      const level = Math.pow(env * crest, 0.6);
+      dot.node.setAttribute('opacity', (level * intensity / 100).toFixed(3));
+    });
+
+    frame = ripples.length ? requestAnimationFrame(render) : 0;
+  }
+
+  function play(x, y) {
+    const width = btn.offsetWidth;
+    const height = btn.offsetHeight;
+    const px = origin === 'center' || x == null ? width / 2 : x;
+    const py = origin === 'center' || y == null ? height / 2 : y;
+    const reach = Math.max(
+      Math.hypot(px, py),
+      Math.hypot(width - px, py),
+      Math.hypot(px, height - py),
+      Math.hypot(width - px, height - py)
+    );
+
+    // One click sends `count` ripples from the same point, `gap` ms apart.
+    const now = performance.now();
+    const total = motionQuery.matches ? 1 : Math.min(5, Math.max(1, Math.round(count)));
+    for (let i = 0; i < total; i += 1) {
+      ripples.push({
+        x: px,
+        y: py,
+        reach,
+        start: now + i * Math.max(0, gap),
+        time: motionQuery.matches ? 400 : Math.max(100, duration),
+      });
+    }
+    while (ripples.length > 10) ripples.shift();
+    if (!frame) frame = requestAnimationFrame(render);
+  }
+
+  btn.addEventListener('click', (event) => {
+    // Keyboard activation reports detail 0 and no real pointer position — ripple from the center.
+    if (event.detail === 0) {
+      play();
+      return;
+    }
+    // Rescale to layout px so the origin stays right when a parent is zoomed (the mobile preview is).
+    const rect = btn.getBoundingClientRect();
+    const scaleX = rect.width ? btn.offsetWidth / rect.width : 1;
+    const scaleY = rect.height ? btn.offsetHeight / rect.height : 1;
+    play((event.clientX - rect.left) * scaleX, (event.clientY - rect.top) * scaleY);
+  });
+
+  if (window.ResizeObserver) new ResizeObserver(buildGrid).observe(btn);
+  buildGrid();
+
+  return {
+    element: btn,
+    play,
+    setLabel(text) {
+      label.textContent = text;
+      btn.setAttribute('aria-label', text);
+    },
+    set(next = {}) {
+      if (next.dotColor != null) dotColor = next.dotColor;
+      if (next.tileSize != null) tileSize = next.tileSize;
+      if (next.tileGap != null) tileGap = next.tileGap;
+      if (next.waves != null) waves = next.waves;
+      if (next.wavelength != null) wavelength = next.wavelength;
+      if (next.glow != null) glow = next.glow;
+      if (next.intensity != null) intensity = next.intensity;
+      if (next.duration != null) duration = next.duration;
+      if (next.count != null) count = next.count;
+      if (next.gap != null) gap = next.gap;
+      if (next.fade != null) fade = next.fade;
+      if (next.origin != null) origin = next.origin;
+      if (next.easingRaw != null) easingRaw = next.easingRaw;
+      ease = makeEasing();
+      blur.setAttribute('stdDeviation', glow);
+      halo.style.display = glow > 0 ? '' : 'none';
+      buildGrid();
+    },
+    applyStyles(styles = {}) {
+      Object.assign(btn.style, styles);
+      buildGrid();
+    },
+  };
+};
+
 window.initHoverButtonExperiment = function initHoverButtonExperiment() {
   const preview = document.querySelector('[data-experiment-preview="button-hover"]');
   const panelRoot = document.querySelector('[data-experiment-panel="button-hover"]');
@@ -15653,6 +16205,569 @@ ${window.HeadingEntranceSnippet?.js || ''}
   preview.dataset.experimentReady = '1';
 };
 
+window.RippleButtonSnippet = {
+  css: `.ripple-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 56px;
+  padding: 0 28px;
+  border: none;
+  border-radius: 28px;
+  background: #000;
+  color: #fff;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ripple-button:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.35);
+  outline-offset: 3px;
+}
+
+/* Dot grid sits inside the button (clipped to its shape), under the label. Invisible at rest. */
+.ripple-button__dots {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ripple-button__dots svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ripple-button__label {
+  position: relative;
+  z-index: 1;
+}
+`,
+  js: `window.initRippleButton = function initRippleButton(root, options = {}) {
+  const btn = root.querySelector('.ripple-button') || root;
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const uid = \`ripple-glow-\${Math.random().toString(36).slice(2, 8)}\`;
+
+  let dotColor = options.dotColor ?? '#FFFFFF';
+  // Fixed LED matrix: equal square tiles separated by a gap; the wave only changes brightness.
+  let tileSize = options.tileSize ?? 6;
+  let tileGap = options.tileGap ?? 1;
+  let waves = options.waves ?? 3;
+  let wavelength = options.wavelength ?? 14;
+  let glow = options.glow ?? 2;
+  let intensity = options.intensity ?? 45;
+  let duration = options.duration ?? 1200;
+  let count = options.count ?? 2;
+  let gap = options.gap ?? 220;
+  let fade = options.fade ?? 60;
+  let origin = options.origin ?? 'click';
+  let easingRaw = options.easingRaw ?? '0.25, 0.1, 0.25, 1';
+
+  const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const ripples = [];
+  let dots = [];
+  let frame = 0;
+
+  function svg(tag, attrs = {}) {
+    const node = document.createElementNS(SVG_NS, tag);
+    Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, value));
+    return node;
+  }
+
+  // The label is wrapped once; the layer is added once so re-init on the same button is safe.
+  let label = btn.querySelector('.ripple-button__label');
+  if (!label) {
+    label = document.createElement('span');
+    label.className = 'ripple-button__label';
+    label.textContent = btn.textContent.trim();
+    btn.textContent = '';
+    btn.appendChild(label);
+  }
+
+  let layer = btn.querySelector('.ripple-button__dots');
+  if (layer) layer.remove();
+  layer = document.createElement('span');
+  layer.className = 'ripple-button__dots';
+  layer.setAttribute('aria-hidden', 'true');
+
+  // Tiles are drawn once crisp, then again through a blur for a faint halo (the "glow").
+  const canvas = svg('svg', { focusable: 'false' });
+  const defs = svg('defs');
+  const filter = svg('filter', { id: \`\${uid}-blur\`, x: '-50%', y: '-50%', width: '200%', height: '200%' });
+  const blur = svg('feGaussianBlur', { stdDeviation: glow });
+  filter.appendChild(blur);
+  defs.appendChild(filter);
+  const grid = svg('g', { id: \`\${uid}-grid\` });
+  const halo = svg('use', { href: \`#\${uid}-grid\`, filter: \`url(#\${uid}-blur)\`, opacity: 0.9 });
+  canvas.append(defs, halo, grid);
+  layer.appendChild(canvas);
+  btn.insertBefore(layer, label);
+
+  // Minimal cubic-bezier(x1, y1, x2, y2) solver for the wave's travel curve.
+  function makeEasing() {
+    const parts = String(easingRaw).replace(/cubic-bezier\\(|\\)/g, '').split(',').map((n) => parseFloat(n));
+    if (parts.length !== 4 || !parts.every(Number.isFinite)) return (t) => t;
+    const [x1, y1, x2, y2] = parts;
+    const bez = (t, a, b) => 3 * a * t * (1 - t) ** 2 + 3 * b * t * t * (1 - t) + t ** 3;
+    return (x) => {
+      let lo = 0;
+      let hi = 1;
+      for (let i = 0; i < 20; i += 1) {
+        const mid = (lo + hi) / 2;
+        if (bez(mid, x1, x2) < x) lo = mid;
+        else hi = mid;
+      }
+      return bez((lo + hi) / 2, y1, y2);
+    };
+  }
+  let ease = makeEasing();
+
+  function buildGrid() {
+    const width = btn.offsetWidth;
+    const height = btn.offsetHeight;
+    const size = Math.max(1, tileSize);
+    const step = size + Math.max(0, tileGap);
+    // Fill edge to edge (the button's radius clips the corners), centered on the button.
+    const cols = Math.ceil(width / step) + 1;
+    const rows = Math.ceil(height / step) + 1;
+    const offsetX = (width - (cols * step - tileGap)) / 2;
+    const offsetY = (height - (rows * step - tileGap)) / 2;
+
+    canvas.setAttribute('viewBox', \`0 0 \${width} \${height}\`);
+    grid.textContent = '';
+    grid.setAttribute('fill', dotColor);
+    dots = [];
+
+    for (let row = 0; row < rows; row += 1) {
+      for (let col = 0; col < cols; col += 1) {
+        const left = offsetX + col * step;
+        const top = offsetY + row * step;
+        const node = svg('rect', { x: left, y: top, width: size, height: size, opacity: 0 });
+        grid.appendChild(node);
+        dots.push({ node, x: left + size / 2, y: top + size / 2 });
+      }
+    }
+  }
+
+  function render(now) {
+    const reduced = motionQuery.matches;
+    const train = Math.max(1, waves) * Math.max(2, wavelength);
+
+    for (let i = ripples.length - 1; i >= 0; i -= 1) {
+      if (now - ripples[i].start >= ripples[i].time) ripples.splice(i, 1);
+    }
+
+    dots.forEach((dot) => {
+      let env = 0;
+      let wave = 0;
+
+      ripples.forEach((ripple) => {
+        const t = (now - ripple.start) / ripple.time;
+        if (t < 0) return;
+        if (reduced) {
+          env = Math.max(env, Math.sin(Math.PI * t));
+          return;
+        }
+        // Wave front travels until the whole train has left the farthest dot.
+        const progress = ease(t);
+        const front = progress * (ripple.reach + train);
+        const behind = front - Math.hypot(dot.x - ripple.x, dot.y - ripple.y);
+        if (behind <= 0 || behind >= train) return;
+        // Flat-topped envelope: quick ramp at the front, softer tail, full strength in between.
+        const smooth = (v) => { const c = Math.min(1, Math.max(0, v)); return c * c * (3 - 2 * c); };
+        const shape = smooth(behind / (train * 0.2)) * smooth((train - behind) / (train * 0.4));
+        // Dims as it travels; \`fade\` 0 = no dimming, 100 = fades linearly to nothing.
+        const decay = 1 - (fade / 100) * t;
+        const e = shape * decay * Math.min(1, (1 - t) * 6);
+        env = Math.max(env, e);
+        wave += e * Math.cos((2 * Math.PI * behind) / wavelength);
+      });
+
+      // Crest → tile lit, trough → tile dark, so the ripple reads as rings of lit tiles.
+      const crest = env > 0 ? 0.5 + 0.5 * Math.max(-1, Math.min(1, wave / env)) : 0;
+      // Perceptual lift: linear opacity on black reads too dim in the mid tones.
+      const level = Math.pow(env * crest, 0.6);
+      dot.node.setAttribute('opacity', (level * intensity / 100).toFixed(3));
+    });
+
+    frame = ripples.length ? requestAnimationFrame(render) : 0;
+  }
+
+  function play(x, y) {
+    const width = btn.offsetWidth;
+    const height = btn.offsetHeight;
+    const px = origin === 'center' || x == null ? width / 2 : x;
+    const py = origin === 'center' || y == null ? height / 2 : y;
+    const reach = Math.max(
+      Math.hypot(px, py),
+      Math.hypot(width - px, py),
+      Math.hypot(px, height - py),
+      Math.hypot(width - px, height - py)
+    );
+
+    // One click sends \`count\` ripples from the same point, \`gap\` ms apart.
+    const now = performance.now();
+    const total = motionQuery.matches ? 1 : Math.min(5, Math.max(1, Math.round(count)));
+    for (let i = 0; i < total; i += 1) {
+      ripples.push({
+        x: px,
+        y: py,
+        reach,
+        start: now + i * Math.max(0, gap),
+        time: motionQuery.matches ? 400 : Math.max(100, duration),
+      });
+    }
+    while (ripples.length > 10) ripples.shift();
+    if (!frame) frame = requestAnimationFrame(render);
+  }
+
+  btn.addEventListener('click', (event) => {
+    // Keyboard activation reports detail 0 and no real pointer position — ripple from the center.
+    if (event.detail === 0) {
+      play();
+      return;
+    }
+    // Rescale to layout px so the origin stays right when a parent is zoomed (the mobile preview is).
+    const rect = btn.getBoundingClientRect();
+    const scaleX = rect.width ? btn.offsetWidth / rect.width : 1;
+    const scaleY = rect.height ? btn.offsetHeight / rect.height : 1;
+    play((event.clientX - rect.left) * scaleX, (event.clientY - rect.top) * scaleY);
+  });
+
+  if (window.ResizeObserver) new ResizeObserver(buildGrid).observe(btn);
+  buildGrid();
+
+  return {
+    element: btn,
+    play,
+    setLabel(text) {
+      label.textContent = text;
+      btn.setAttribute('aria-label', text);
+    },
+    set(next = {}) {
+      if (next.dotColor != null) dotColor = next.dotColor;
+      if (next.tileSize != null) tileSize = next.tileSize;
+      if (next.tileGap != null) tileGap = next.tileGap;
+      if (next.waves != null) waves = next.waves;
+      if (next.wavelength != null) wavelength = next.wavelength;
+      if (next.glow != null) glow = next.glow;
+      if (next.intensity != null) intensity = next.intensity;
+      if (next.duration != null) duration = next.duration;
+      if (next.count != null) count = next.count;
+      if (next.gap != null) gap = next.gap;
+      if (next.fade != null) fade = next.fade;
+      if (next.origin != null) origin = next.origin;
+      if (next.easingRaw != null) easingRaw = next.easingRaw;
+      ease = makeEasing();
+      blur.setAttribute('stdDeviation', glow);
+      halo.style.display = glow > 0 ? '' : 'none';
+      buildGrid();
+    },
+    applyStyles(styles = {}) {
+      Object.assign(btn.style, styles);
+      buildGrid();
+    },
+  };
+};
+`,
+};
+
+window.initRippleButtonExperiment = function initRippleButtonExperiment() {
+  const preview = document.querySelector('[data-experiment-preview="button-ripple"]');
+  const panelRoot = document.querySelector('[data-experiment-panel="button-ripple"]');
+  if (!preview || !panelRoot || preview.dataset.experimentReady === '1') return;
+
+  const utils = window.ComponentUtils;
+  const ripple = window.initRippleButton(preview, {});
+  const btn = ripple.element;
+
+  const controls = {
+    labelText: document.getElementById('exp-button-ripple-label-text'),
+    fontSize: document.getElementById('exp-button-ripple-font-size'),
+    fontWeight: document.getElementById('exp-button-ripple-font-weight'),
+    paddingX: document.getElementById('exp-button-ripple-padding-x'),
+    radius: document.getElementById('exp-button-ripple-radius'),
+    tileSize: document.getElementById('exp-button-ripple-tile-size'),
+    tileGap: document.getElementById('exp-button-ripple-tile-gap'),
+    waves: document.getElementById('exp-button-ripple-waves'),
+    wavelength: document.getElementById('exp-button-ripple-wavelength'),
+    glow: document.getElementById('exp-button-ripple-glow'),
+    intensity: document.getElementById('exp-button-ripple-intensity'),
+    duration: document.getElementById('exp-button-ripple-duration'),
+    count: document.getElementById('exp-button-ripple-count'),
+    gap: document.getElementById('exp-button-ripple-gap'),
+    fade: document.getElementById('exp-button-ripple-fade'),
+  };
+
+  const originSelector = window.initOptionSelector(document.getElementById('exp-button-ripple-origin-root'), {
+    value: 'click',
+    options: [
+      { value: 'click', label: 'Click point' },
+      { value: 'center', label: 'Center' },
+    ],
+    onChange: applyAll,
+  });
+
+  const easing = window.initCubicBezierInput(document.getElementById('exp-button-ripple-easing-root'), {
+    onChange: applyAll,
+  });
+
+  const dimensions = window.initDimensionControlGroup(panelRoot, {
+    width: {
+      initialMode: 'hug',
+      measure: () => Math.max(Math.round(btn.offsetWidth), 0),
+      onChange: applyAll,
+    },
+    height: {
+      initialMode: 'fixed',
+      measure: () => Math.max(Math.round(btn.offsetHeight), 0),
+      onChange: applyAll,
+    },
+  });
+
+  const bgColor = window.initColorSelector(document.getElementById('exp-button-ripple-bg-color-root'), {
+    onChange: applyAll,
+  });
+
+  const textColor = window.initColorSelector(document.getElementById('exp-button-ripple-text-color-root'), {
+    onChange: applyAll,
+  });
+
+  const dotColor = window.initColorSelector(document.getElementById('exp-button-ripple-glow-color-root'), {
+    onChange: applyAll,
+  });
+
+  const snippet = window.initSnippetOutput(document.getElementById('exp-button-ripple-snippet-root'), {
+    filename: 'button-ripple.html',
+    getContent: generateSnippet,
+    updateOnInit: false,
+  });
+
+  utils.bindInputWrapInputs(panelRoot);
+
+  Object.values(controls).forEach((input) => {
+    if (!(input instanceof HTMLInputElement)) return;
+    input.addEventListener('input', applyAll);
+    if (input !== controls.labelText) utils.bindNumericArrowKey(input, applyAll);
+  });
+
+  const colorFields = [
+    ['bg', bgColor],
+    ['text', textColor],
+    ['dot', dotColor],
+  ];
+
+  function collectSettings() {
+    const data = {
+      label: controls.labelText.value,
+      fontSize: controls.fontSize.value,
+      fontWeight: controls.fontWeight.value,
+      paddingX: controls.paddingX.value,
+      radius: controls.radius.value,
+      tileSize: controls.tileSize.value,
+      tileGap: controls.tileGap.value,
+      waves: controls.waves.value,
+      wavelength: controls.wavelength.value,
+      glow: controls.glow.value,
+      intensity: controls.intensity.value,
+      duration: controls.duration.value,
+      count: controls.count.value,
+      gap: controls.gap.value,
+      fade: controls.fade.value,
+      origin: originSelector.getValue(),
+      easing: easing.getRaw(),
+      widthMode: dimensions.width.getMode(),
+      widthValue: dimensions.width.getValue(),
+      heightMode: dimensions.height.getMode(),
+      heightValue: dimensions.height.getValue(),
+    };
+    colorFields.forEach(([key, field]) => {
+      data[`${key}Hex`] = field.hexInput.value;
+      data[`${key}Opacity`] = field.opacityInput.value;
+    });
+    return data;
+  }
+
+  function applySettings(data) {
+    if (!data) return;
+
+    if (data.label != null) controls.labelText.value = data.label;
+    ['fontSize', 'fontWeight', 'paddingX', 'radius', 'tileSize', 'tileGap', 'waves', 'wavelength', 'glow', 'intensity', 'duration', 'count', 'gap', 'fade']
+      .forEach((key) => {
+        if (data[key] != null) controls[key].value = data[key];
+      });
+    if (data.origin != null) originSelector.setValue(data.origin, false);
+    if (data.easing != null) easing.setRaw(data.easing, false);
+
+    colorFields.forEach(([key, field]) => {
+      if (data[`${key}Hex`] != null) field.hexInput.value = data[`${key}Hex`];
+      if (data[`${key}Opacity`] != null) field.opacityInput.value = data[`${key}Opacity`];
+      field.updateUI(false);
+    });
+
+    if (data.widthMode) {
+      dimensions.width.setMode(data.widthMode, false);
+      if (data.widthMode === 'fixed' && data.widthValue != null) {
+        dimensions.width.element.querySelector('.dimension-fixed-input').value =
+          String(data.widthValue).replace(/px$/i, '');
+      }
+    }
+
+    if (data.heightMode) {
+      dimensions.height.setMode(data.heightMode, false);
+      if (data.heightMode === 'fixed' && data.heightValue != null) {
+        dimensions.height.element.querySelector('.dimension-fixed-input').value =
+          String(data.heightValue).replace(/px$/i, '');
+      }
+    }
+  }
+
+  window.ExperimentSettings = window.ExperimentSettings || {};
+  window.ExperimentSettings['button-ripple'] = {
+    collect: collectSettings,
+    apply: applySettings,
+  };
+
+  function getConfig() {
+    return {
+      label: controls.labelText.value,
+      width: dimensions.width.getValue(),
+      height: dimensions.height.getValue(),
+      fontSize: Math.max(1, utils.parsePx(controls.fontSize.value, 16)),
+      fontWeight: Math.min(900, Math.max(100, Math.round(utils.parsePx(controls.fontWeight.value, 500)))),
+      paddingX: Math.max(0, utils.parsePx(controls.paddingX.value, 28)),
+      radius: Math.max(0, utils.parsePx(controls.radius.value, 28)),
+      bg: bgColor.getColor(),
+      color: textColor.getColor(),
+      dotColor: dotColor.getColor(),
+      tileSize: Math.max(1, utils.parsePx(controls.tileSize.value, 6)),
+      tileGap: Math.max(0, utils.parsePx(controls.tileGap.value, 1)),
+      waves: Math.min(8, Math.max(1, Math.round(utils.parsePx(controls.waves.value, 3)))),
+      wavelength: Math.max(2, utils.parsePx(controls.wavelength.value, 14)),
+      glow: Math.max(0, utils.parsePx(controls.glow.value, 2)),
+      intensity: Math.min(100, Math.max(0, utils.parsePx(controls.intensity.value, 45))),
+      duration: Math.max(100, utils.parseMs(controls.duration.value, 1200)),
+      count: Math.min(5, Math.max(1, Math.round(utils.parsePx(controls.count.value, 2)))),
+      gap: Math.max(0, utils.parseMs(controls.gap.value, 220)),
+      fade: Math.min(100, Math.max(0, utils.parsePx(controls.fade.value, 60))),
+      origin: originSelector.getValue(),
+      easingRaw: easing.getRaw() || '0.25, 0.1, 0.25, 1',
+    };
+  }
+
+  function cssSize(value, fallback) {
+    return value.toLowerCase() === 'auto' ? 'auto' : `${utils.parsePx(value, fallback)}px`;
+  }
+
+  function rippleOptions(config) {
+    return {
+      dotColor: config.dotColor,
+      tileSize: config.tileSize,
+      tileGap: config.tileGap,
+      waves: config.waves,
+      wavelength: config.wavelength,
+      glow: config.glow,
+      intensity: config.intensity,
+      duration: config.duration,
+      count: config.count,
+      gap: config.gap,
+      fade: config.fade,
+      origin: config.origin,
+      easingRaw: config.easingRaw,
+    };
+  }
+
+  function applyAll() {
+    const config = getConfig();
+
+    ripple.setLabel(config.label);
+    ripple.set(rippleOptions(config));
+    ripple.applyStyles({
+      width: cssSize(config.width, 0),
+      height: cssSize(config.height, 56),
+      padding: `0 ${config.paddingX}px`,
+      borderRadius: `${config.radius}px`,
+      background: config.bg,
+      color: config.color,
+      fontSize: `${config.fontSize}px`,
+      fontWeight: String(config.fontWeight),
+    });
+
+    dimensions.width.updateLabel();
+    dimensions.height.updateLabel();
+    snippet.update();
+  }
+
+  const pending = window.__pendingExperimentDefaults?.['button-ripple'];
+  if (pending) applySettings(pending);
+  applyAll();
+
+  function generateSnippet() {
+    const config = getConfig();
+    const label = utils.escapeHtml(config.label);
+    const options = JSON.stringify(rippleOptions(config), null, 2).replace(/\n/g, '\n      ');
+
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ripple Button</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      overflow: hidden;
+    }
+
+${window.RippleButtonSnippet?.css || ''}
+
+    .ripple-button {
+      width: ${cssSize(config.width, 0)};
+      height: ${cssSize(config.height, 56)};
+      padding: 0 ${config.paddingX}px;
+      border-radius: ${config.radius}px;
+      background: ${config.bg};
+      color: ${config.color};
+      font-size: ${config.fontSize}px;
+      font-weight: ${config.fontWeight};
+    }
+  </style>
+</head>
+<body>
+  <button id="btn" class="ripple-button" type="button">${label}</button>
+
+  <script>
+${window.RippleButtonSnippet?.js || ''}
+    window.initRippleButton(document.getElementById('btn'), ${options});
+  <\/script>
+</body>
+</html>`;
+  }
+
+  preview.dataset.experimentReady = '1';
+};
+
 (function () {
   const LEGACY_STORAGE_KEY = 'cp-kit-experiment-defaults';
   const STORAGE_PREFIX = 'cp-kit-experiment-defaults-';
@@ -15670,7 +16785,7 @@ ${window.HeadingEntranceSnippet?.js || ''}
     8: 'parallax-horizontal',
     9: 'button-stagger-text',
   };
-  const EXPERIMENT_IDS = [...Object.values(NUMERIC_ID_MAP), 'heading-entrance'];
+  const EXPERIMENT_IDS = [...Object.values(NUMERIC_ID_MAP), 'heading-entrance', 'button-ripple'];
 
   window.ExperimentSettings = window.ExperimentSettings || {};
 
@@ -15685,6 +16800,7 @@ ${window.HeadingEntranceSnippet?.js || ''}
     'parallax-horizontal': { init: () => window.initHorizontalParallaxExperiment?.() },
     'button-stagger-text': { init: () => window.initStaggerTextButtonExperiment?.() },
     'heading-entrance': { init: () => window.initHeadingEntranceExperiment?.() },
+    'button-ripple': { init: () => window.initRippleButtonExperiment?.() },
   };
 
   function loadExperimentDefaults(id) {
@@ -15774,6 +16890,7 @@ ${window.HeadingEntranceSnippet?.js || ''}
       { value: 'parallax-horizontal', label: 'Parallax Horizontal' },
       { value: 'button-stagger-text', label: 'Button Stagger Text' },
       { value: 'heading-entrance', label: 'Heading Entrance' },
+      { value: 'button-ripple', label: 'Button Ripple' },
     ],
     onChange: (value) => switchExperiment(value),
   });

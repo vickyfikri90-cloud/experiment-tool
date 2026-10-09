@@ -55,6 +55,15 @@ const headingEmbed = `window.HeadingEntranceSnippet = {
 fs.writeFileSync(path.join(root, 'heading-entrance-snippet-embed.js'), headingEmbed);
 console.log(`Built heading-entrance-snippet-embed.js (${(Buffer.byteLength(headingEmbed) / 1024).toFixed(1)} KB)`);
 
+const rippleCss = read('Components/RippleButton/component.css');
+const rippleJs = escapeForInlineScript(read('Components/RippleButton/component.js'));
+const rippleEmbed = `window.RippleButtonSnippet = {
+  css: \`${escapeTemplate(rippleCss)}\`,
+  js: \`${escapeTemplate(rippleJs)}\`,
+};\n`;
+fs.writeFileSync(path.join(root, 'button-ripple-snippet-embed.js'), rippleEmbed);
+console.log(`Built button-ripple-snippet-embed.js (${(Buffer.byteLength(rippleEmbed) / 1024).toFixed(1)} KB)`);
+
 const styles = [
   'Components/shared/base.css',
   'Components/ControlPanel/component.css',
@@ -79,6 +88,7 @@ const styles = [
   'Components/HorizontalParallax/component.css',
   'Components/StaggerTextButton/component.css',
   'Components/HeadingEntrance/component.css',
+  'Components/RippleButton/component.css',
 ].map(read).join('\n');
 
 const scripts = [
@@ -105,6 +115,7 @@ const scripts = [
   'Components/HorizontalParallax/component.js',
   'Components/StaggerTextButton/component.js',
   'Components/HeadingEntrance/component.js',
+  'Components/RippleButton/component.js',
   'button-hover-app.js',
   'button-rotate-x-app.js',
   'carousel-rotate-app.js',
@@ -119,6 +130,8 @@ const scripts = [
   'button-stagger-text-app.js',
   'heading-entrance-snippet-embed.js',
   'heading-entrance-app.js',
+  'button-ripple-snippet-embed.js',
+  'button-ripple-app.js',
   'experiments-app.js',
 ].map(read).join('\n');
 
