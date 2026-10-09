@@ -55,12 +55,22 @@ const headingEmbed = `window.HeadingEntranceSnippet = {
 fs.writeFileSync(path.join(root, 'heading-entrance-snippet-embed.js'), headingEmbed);
 console.log(`Built heading-entrance-snippet-embed.js (${(Buffer.byteLength(headingEmbed) / 1024).toFixed(1)} KB)`);
 
+const inkBleedCss = read('Components/InkBleedImage/component.css').split('/* Experiment preview only')[0].trim();
+const inkBleedJs = escapeForInlineScript(read('Components/InkBleedImage/component.js'));
+const inkBleedEmbed = `window.InkBleedImageSnippet = {
+  css: \`${escapeTemplate(inkBleedCss)}\`,
+  js: \`${escapeTemplate(inkBleedJs)}\`,
+};\n`;
+fs.writeFileSync(path.join(root, 'image-ink-bleed-snippet-embed.js'), inkBleedEmbed);
+console.log(`Built image-ink-bleed-snippet-embed.js (${(Buffer.byteLength(inkBleedEmbed) / 1024).toFixed(1)} KB)`);
+
 const styles = [
   'Components/shared/base.css',
   'Components/ControlPanel/component.css',
   'Components/DimensionControl/component.css',
   'Components/ColorInput/component.css',
   'Components/ColorSelector/component.css',
+  'Components/ImageUpload/component.css',
   'Components/MultiImageUpload/component.css',
   'Components/SizeControl/component.css',
   'Components/Tooltip/component.css',
@@ -79,6 +89,7 @@ const styles = [
   'Components/HorizontalParallax/component.css',
   'Components/StaggerTextButton/component.css',
   'Components/HeadingEntrance/component.css',
+  'Components/InkBleedImage/component.css',
 ].map(read).join('\n');
 
 const scripts = [
@@ -87,6 +98,7 @@ const scripts = [
   'Components/DimensionControl/component.js',
   'Components/ColorInput/component.js',
   'Components/ColorSelector/component.js',
+  'Components/ImageUpload/component.js',
   'Components/MultiImageUpload/component.js',
   'Components/SizeControl/component.js',
   'Components/Tooltip/component.js',
@@ -105,6 +117,7 @@ const scripts = [
   'Components/HorizontalParallax/component.js',
   'Components/StaggerTextButton/component.js',
   'Components/HeadingEntrance/component.js',
+  'Components/InkBleedImage/component.js',
   'button-hover-app.js',
   'button-rotate-x-app.js',
   'carousel-rotate-app.js',
@@ -119,6 +132,8 @@ const scripts = [
   'button-stagger-text-app.js',
   'heading-entrance-snippet-embed.js',
   'heading-entrance-app.js',
+  'image-ink-bleed-snippet-embed.js',
+  'image-ink-bleed-app.js',
   'experiments-app.js',
 ].map(read).join('\n');
 

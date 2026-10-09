@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="Components/HorizontalParallax/component.css">
   <link rel="stylesheet" href="Components/StaggerTextButton/component.css">
   <link rel="stylesheet" href="Components/HeadingEntrance/component.css">
+  <link rel="stylesheet" href="Components/InkBleedImage/component.css">
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Satoshi:wght@500&display=swap" rel="stylesheet">
   <style>
     body {
@@ -57,6 +58,7 @@
       await ExperimentTool.loadScript('HorizontalParallax/component.js', 'horizontal-parallax');
       await ExperimentTool.loadScript('StaggerTextButton/component.js', 'button-stagger-text');
       await ExperimentTool.loadScript('HeadingEntrance/component.js', 'heading-entrance');
+      await ExperimentTool.loadScript('InkBleedImage/component.js', 'ink-bleed-image');
       await ExperimentTool.loadScript('../button-hover-app.js', 'button-hover');
       await ExperimentTool.loadScript('../button-rotate-x-app.js', 'button-rotate-x');
       await ExperimentTool.loadScript('../carousel-rotate-app.js', 'carousel-rotate');
@@ -71,6 +73,8 @@
       await ExperimentTool.loadScript('../button-stagger-text-app.js', 'button-stagger-text');
       await ExperimentTool.loadScript('../heading-entrance-snippet-embed.js', 'heading-entrance-snippet-embed');
       await ExperimentTool.loadScript('../heading-entrance-app.js', 'heading-entrance');
+      await ExperimentTool.loadScript('../image-ink-bleed-snippet-embed.js', 'image-ink-bleed-snippet-embed');
+      await ExperimentTool.loadScript('../image-ink-bleed-app.js', 'image-ink-bleed');
       await ExperimentTool.loadScript('../experiments-app.js', 'experiments');
     })().catch((error) => {
       console.error(error);
