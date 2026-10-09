@@ -15,7 +15,7 @@
     8: 'parallax-horizontal',
     9: 'button-stagger-text',
   };
-  const EXPERIMENT_IDS = [...Object.values(NUMERIC_ID_MAP), 'heading-entrance'];
+  const EXPERIMENT_IDS = [...Object.values(NUMERIC_ID_MAP), 'heading-entrance', 'image-ink-bleed'];
 
   window.ExperimentSettings = window.ExperimentSettings || {};
 
@@ -30,6 +30,7 @@
     'parallax-horizontal': { init: () => window.initHorizontalParallaxExperiment?.() },
     'button-stagger-text': { init: () => window.initStaggerTextButtonExperiment?.() },
     'heading-entrance': { init: () => window.initHeadingEntranceExperiment?.() },
+    'image-ink-bleed': { init: () => window.initImageInkBleedExperiment?.() },
   };
 
   function loadExperimentDefaults(id) {
@@ -119,6 +120,7 @@
       { value: 'parallax-horizontal', label: 'Parallax Horizontal' },
       { value: 'button-stagger-text', label: 'Button Stagger Text' },
       { value: 'heading-entrance', label: 'Heading Entrance' },
+      { value: 'image-ink-bleed', label: 'Image Ink Bleed' },
     ],
     onChange: (value) => switchExperiment(value),
   });

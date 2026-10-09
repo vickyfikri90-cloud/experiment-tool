@@ -66,6 +66,12 @@ Experiment Tool/
 └── scripts/build-single-html.js # Inliner for production HTML
 ```
 
+## Image Ink Bleed
+
+`experiments.html` → **Image Ink Bleed**: upload an image and it enters the way ink bleeds into paper (ghosted wet edge, ragged fibres, writing-direction sweep). Tweak the look in the panel and copy / download the generated HTML.
+
+The effect is a custom WebGPU filter built with the open-source [shaders](https://shaders.com) library (MIT). The exported snippet loads `shaders@4.0.3` from jsDelivr (~1 MB gzipped, cached), so it needs network access and a WebGPU browser (Chrome / Edge 113+, Safari 26+); other browsers get a plain fade-in of the same image.
+
 ## Architecture
 
 ```
