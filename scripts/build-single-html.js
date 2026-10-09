@@ -63,6 +63,14 @@ const rippleEmbed = `window.RippleButtonSnippet = {
 };\n`;
 fs.writeFileSync(path.join(root, 'button-ripple-snippet-embed.js'), rippleEmbed);
 console.log(`Built button-ripple-snippet-embed.js (${(Buffer.byteLength(rippleEmbed) / 1024).toFixed(1)} KB)`);
+const inkBleedCss = read('Components/InkBleedImage/component.css').split('/* Experiment preview only')[0].trim();
+const inkBleedJs = escapeForInlineScript(read('Components/InkBleedImage/component.js'));
+const inkBleedEmbed = `window.InkBleedImageSnippet = {
+  css: \`${escapeTemplate(inkBleedCss)}\`,
+  js: \`${escapeTemplate(inkBleedJs)}\`,
+};\n`;
+fs.writeFileSync(path.join(root, 'image-ink-bleed-snippet-embed.js'), inkBleedEmbed);
+console.log(`Built image-ink-bleed-snippet-embed.js (${(Buffer.byteLength(inkBleedEmbed) / 1024).toFixed(1)} KB)`);
 
 const styles = [
   'Components/shared/base.css',
@@ -70,6 +78,7 @@ const styles = [
   'Components/DimensionControl/component.css',
   'Components/ColorInput/component.css',
   'Components/ColorSelector/component.css',
+  'Components/ImageUpload/component.css',
   'Components/MultiImageUpload/component.css',
   'Components/SizeControl/component.css',
   'Components/Tooltip/component.css',
@@ -89,6 +98,7 @@ const styles = [
   'Components/StaggerTextButton/component.css',
   'Components/HeadingEntrance/component.css',
   'Components/RippleButton/component.css',
+  'Components/InkBleedImage/component.css',
 ].map(read).join('\n');
 
 const scripts = [
@@ -97,6 +107,7 @@ const scripts = [
   'Components/DimensionControl/component.js',
   'Components/ColorInput/component.js',
   'Components/ColorSelector/component.js',
+  'Components/ImageUpload/component.js',
   'Components/MultiImageUpload/component.js',
   'Components/SizeControl/component.js',
   'Components/Tooltip/component.js',
@@ -116,6 +127,7 @@ const scripts = [
   'Components/StaggerTextButton/component.js',
   'Components/HeadingEntrance/component.js',
   'Components/RippleButton/component.js',
+  'Components/InkBleedImage/component.js',
   'button-hover-app.js',
   'button-rotate-x-app.js',
   'carousel-rotate-app.js',
@@ -132,6 +144,8 @@ const scripts = [
   'heading-entrance-app.js',
   'button-ripple-snippet-embed.js',
   'button-ripple-app.js',
+  'image-ink-bleed-snippet-embed.js',
+  'image-ink-bleed-app.js',
   'experiments-app.js',
 ].map(read).join('\n');
 
